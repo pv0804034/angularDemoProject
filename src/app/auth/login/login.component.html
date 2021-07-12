@@ -1,0 +1,80 @@
+<app-login-register-sidenav id="app-login-sidebar"></app-login-register-sidenav>
+<div class="main">
+  <div class="login-logo" style="text-align: center; margin-top: 1rem">
+    <img src="../../../assets/images/nepal-sarkar-logo.png" alt="logo" style="width: 6rem; margin-left: 50%">
+    <h6 style="margin-left: 50%; margin-top: 1rem">प्रदेश सरकार</h6>
+    <h6 style="margin-left: 50%;">लुम्बिनी प्रदेश</h6>
+    <h3 style="margin-left: 50%; color: #AF111C">उद्याेग,वन तथा वातावरण मन्त्रालय</h3>
+    <h6 style="margin-left: 50%;"><strong>बुटवल, रूपन्देही</strong></h6>
+  </div>
+  <div id="loginFormBox">
+    <div class="logo">
+      <h1 id="title" class="title" i18n="@@login" style="margin-left: 0%">प्रयोगकर्ता लगइन</h1>
+      <img src="../../../assets/images/demand-and-supply-logo.png" alt="logo" />
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-control-group" style="margin-bottom: 10px;">
+        <label class="label" for="input-email" i18n="@@username">
+          प्रयोगकर्ता नाम</label>
+        <input nbInput fullWidth type="email" name="email" id="username" formControlName="username" class="form-control"
+          i18n-placeholder="@@username" placeholder="Username" autofocus style="font-size: 12px;">
+
+        <small class="form-text text-danger-color"
+          *ngIf="loginForm.controls.username.hasError('required') && loginForm.controls.username.touched"
+          i18n="@@userNameIsRequired">
+          प्रयोगकर्ता नाम अनिवार्य छ!
+        </small>
+      </div>
+
+      <div class="form-control-group" style="margin-bottom: 10px;">
+        <label class="label" for="input-password" i18n="@@password">
+          पासवर्ड:</label>
+        <nb-form-field>
+          <input nbInput fullWidth type="password" name="password" id="password" formControlName="password"
+            class="form-control" i18n-placeholder="@@password" placeholder="Password" autofocus
+            style="font-size: 12px;">
+          <!-- <button nbSuffix nbButton type="button" ghost (click)="passwordService.toggleShowPassword()">
+            <nb-icon [icon]="passwordService.showPassword ? 'eye-outline' : 'eye-off'" pack="eva">
+            </nb-icon>
+          </button> -->
+        </nb-form-field>
+
+        <small class="form-text text-danger-color"
+          *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched"
+          i18n="@@passwordIsRequired">
+
+          पासवर्ड अनिवार्य छ!
+        </small>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button nbButton fullWidth class="btn btn-primary" type="submit" i18n="@@login"
+            [disabled]="submitted || !loginForm.valid" [class.btn-pulse]="submitted"
+            style="padding: 0.3rem; width: 100%">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            लगइन
+          </button>
+        </div>
+      </div>
+
+      <div class="forgotPassword-register" style="margin-top: 10px; font-size: 15px">
+        <div class="row">
+          <div class="col-md-6" style="text-align: left;">
+            <a i18n="@@register" href="" routerLink="/register">नयाँ प्रयोगकर्ता दर्ता गर्नुहोस्</a>
+          </div>
+
+          <!-- <div class="col-md-6" style="text-align: right; font-size: 15px">
+            <a class="text-danger-color" routerLink="/forgotPassword" i18n="@@forgotPassword">पासवर्ड भुल्नु भयो</a>
+          </div> -->
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="copyright-text">
+    <p style="text-align: center; color: #000000; margin-left: 50%" i18n>©२०२१-२०२२ , सबै अधिकार सुरक्षित.
+      <a target="_blank" href="https://bootwal.com" style="text-decoration: none;">माग र आपूर्ति</a>
+    </p>
+  </div>
+</div>

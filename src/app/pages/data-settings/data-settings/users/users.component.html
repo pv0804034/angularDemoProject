@@ -1,0 +1,58 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card accent="danger">
+      <nb-card-header style="background-color:#588C7F;">
+        <label>
+          <h6 style="text-transform: uppercase; color: #ffffff" i18n="@@users">प्रयोगकर्ताहरू</h6>
+        </label>
+
+        <button nbButton status="basic" style="float: right;" size="small" (click)="createUsers()">
+          <nb-icon icon="plus-circle"></nb-icon> थप्नुहोस
+        </button>
+
+      </nb-card-header>
+      <nb-card-body>
+        <form #form="ngForm">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+              <tr>
+                <th i18n="@@SN">क्र.स</th>
+                <th i18n="@@firstName">पहिलो नाम</th>
+                <th i18n="@@lastName">थर</th>
+                <th i18n="@@email">ईमेल</th>
+                <th i18n="@@role">भूमिका</th>
+                <th i18n="@@phone">फोन</th>
+                <th i18n="@@action">कार्य</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let i=index">
+                <td scope="row">{{i+1}}</td>
+                <td> {{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.emailId }}</td>
+                <td>{{ user.roleName }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                  <!-- <button nbButton size="small" status="primary" style="margin-right: 10px">
+                    <nb-icon icon="eye"></nb-icon>
+                  </button> -->
+                  <button nbButton size="small" status="warning" (click)="onUserDataEdit(user)"
+                    style="margin-right: 10px">
+                    <nb-icon icon="edit-2"></nb-icon>
+                  </button>
+                  <button nbButton size="small" status="danger" (click)="onDelete(user.id)">
+                    <nb-icon icon="trash"></nb-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </nb-card-body>
+      <nb-card-footer>
+      </nb-card-footer>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>
